@@ -13,6 +13,7 @@ int countPairs1(int* arr, int len, int value)
 			j++;
 		if ((arr[i] != -1) && (arr[j] != -1) && (i!=j)&&(arr[i] + arr[j] == value))
 		{
+			//printf("%d+%d=%d\n", arr[i], arr[j], value);
 			k++;
 		}
 	}
@@ -34,6 +35,7 @@ int countPairs2(int* arr, int len, int value)
 		{
 			if ((i!=j)&&(arr[i] + arr[j] == value))
 			{
+			//	printf("%d+%d=%d\n", arr[i], arr[j], value);
 				k++;
 			}
 		}
@@ -56,9 +58,10 @@ int countPairs3(int* arr, int len, int value)
 	if (j == -1) continue;
 	else if (j == i) continue;
 	else	if ((arr[i] + arr[j] == value) && (arr[j] != -1) && (arr[i]!=-1))
-			{
-				k++;
-			}
+		{
+		//printf("%d+%d=%d\n", arr[i], arr[j], value);
+		k++;
+		}
 	}
 	return k;
 }
@@ -112,4 +115,20 @@ int cbinsearch(int* arr, int size, int value)
 	k = arr[mid];
 	if (k == value) return mid;
 	else return -1;
+}
+
+void generateSorted(int* arr, int min, int max, int len)
+{
+	int value = 0, j = 0;
+	for (int i = 0; i < len; i++)
+	{
+		value = min + rand() % (max - min + 1);
+		j = i - 1;
+		while (j >= 0 && arr[j] > value)
+		{
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = value;
+	}
 }
