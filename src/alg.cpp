@@ -46,8 +46,11 @@ int countPairs3(int* arr, int len, int value)
 		n++;
 	}
 	for (int i = n; i < len; i++)
-		if (cbinsearch(arr, len, value - arr[i]))
+		if (arr[i]+cbinsearch(arr, len, value - arr[i])==value)
+		{
+
 			k++;
+		}
 	return k;
 }
 void del(int* arr, int len)
