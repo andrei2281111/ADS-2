@@ -1,3 +1,6 @@
+void del(int* arr, int len);
+void sort(int* arr, int len);
+int cbinsearch(int* arr, int size, int value);
 int countPairs1(int* arr, int len, int value)
 {
 	del(arr, len);
