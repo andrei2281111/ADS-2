@@ -8,8 +8,10 @@ int countPairs1(int* arr, int len, int value)
 		int j = 0;
 		while ((j < len) && (arr[i] + arr[j] != value))
 			j++;
-		if ((arr[i]!=-1)&&(arr[j]!=-1)&&(arr[i] + arr[j] == value))
+		if ((arr[i] != -1) && (arr[j] != -1) && (i!=j)&&(arr[i] + arr[j] == value))
+		{
 			k++;
+		}
 	}
 	return k;
 }
@@ -27,7 +29,7 @@ int countPairs2(int* arr, int len, int value)
 	{
 		for (int j = len; j >= n; j--)
 		{
-			if (arr[i] + arr[j] == value)
+			if ((i!=j)&&(arr[i] + arr[j] == value))
 			{
 				k++;
 			}
@@ -46,11 +48,15 @@ int countPairs3(int* arr, int len, int value)
 		n++;
 	}
 	for (int i = n; i < len; i++)
-		if (arr[i]+cbinsearch(arr, len, value - arr[i])==value)
-		{
-
-			k++;
-		}
+	{
+	int j = cbinsearch(arr, len, value - arr[i]);
+	if(j!=-1)
+		if(j!=i)
+			if (arr[i] + arr[j] == value)
+			{
+				k++;
+			}
+	}
 	return k;
 }
 void del(int* arr, int len)
@@ -101,6 +107,6 @@ int cbinsearch(int* arr, int size, int value)
 		}
 	}
 	k = arr[mid];
-	if (k == value) return k;
-	else return 0;
+	if (k == value) return mid;
+	else return -1;
 }
