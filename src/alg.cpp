@@ -42,7 +42,7 @@ int k = 0;
     int r = len-1;
     int mid=arr[mi];
     
-    while (mid+arr[i]!=value)
+    while ((mid+arr[i]!=value)&&(l!=len)&&(r!=-1))
     {
       if (mid+arr[i]>value)
         {
