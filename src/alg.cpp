@@ -1,4 +1,4 @@
-#include <unistd.h> // cheat mode on
+//#include <unistd.h> // cheat mode on
 int countPairs1(int *arr,int len,int value)
 {
     int counter = 0;
@@ -6,7 +6,7 @@ int countPairs1(int *arr,int len,int value)
         for(int j = i+1; j < len; j++)
             if (arr[i] + arr[j] == value)
                 counter++;
-    sleep(0.8); // cheat
+ //   sleep(0.8); // cheat
     return counter;
 }
 
@@ -29,7 +29,7 @@ int countPairs2(int *arr,int len,int value)
         }
 
     }
-    sleep(0.4); // cheat
+//    sleep(0.4); // cheat
     return counter;
 }
 
