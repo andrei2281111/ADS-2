@@ -22,7 +22,7 @@ int k = 0;
      if (arr[i] + arr[j] == value)
      {
        k++;
-       len=j;
+       
      }
    }
  }
