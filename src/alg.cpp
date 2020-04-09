@@ -31,51 +31,39 @@ int k = 0;
 }
 
 
-int countPairs3(int *arr,int len,int value)
+int countPairs3(int *arr, int len, int value)
 {
-int k = 0;
- for (int i = 0; i < len; i++)
- {
-    int l = i;
-    int mi=(l+r)/2;
-    int j;
-    int r = len-1;
-    int mid=arr[mi];
-    
-    while ((mid+arr[i]!=value)&&(l!=len)&&(r!=-1))
-    {
-      if (mid+arr[i]>value)
-        {
-        r=mi-1;
-        mi=(l+r)/2;
-        mid=arr[mi];
-        }
-        else
-        if (mid+arr[i]<value)
-          {
-          l=mi+1;
-          mi=(l+r)/2;
-          mid=arr[mi];
-          }
-     }    
-          
-          
-     if (mid+arr[i]==value)
-      {
-          k++;
-          j=mi;
-          while (arr[j+1]==mid)
-            {
-              j++;
-              k++;
-            }
-           j=mi;
-          while (arr[j-1]==mid)
-            {
-              j--;
-              k++;
-            }
-      }       
- }
- return k;
+	int k = 0;
+	for (int i = 0; i < len - 1; i++)
+	{
+		int left = i, right = len;
+
+		while (left < right-1)
+		{
+			int mid = (left + right) / 2;
+			if (arr[i] + arr[mid] == value)
+			{
+				k++;
+				int j = mid+1;
+				while (arr[i] + arr[j] == value && j <right)
+				{
+					k++;
+					j++;
+				}
+				j = mid - 1;
+				while (arr[i] + arr[j] == value && j>left)
+				{
+					k++;
+					j--;
+				}
+				break;
+			}
+			if (arr[i] + arr[mid] > value)
+				right = mid;
+			else
+				left = mid;
+		}
+
+	}
+	return k;
 }
