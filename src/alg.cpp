@@ -20,8 +20,8 @@ int countPairs2(int* arr, int len, int value)
 				counter++;
 
 			}
-            if (arr[i] + arr[j] < value)
-                break;
+            //if (arr[i] + arr[j] < value)
+            //    break;
 		}
 	}
 	return counter;
