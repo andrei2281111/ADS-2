@@ -1,28 +1,28 @@
 int countPairs1(int* arr, int len, int value)
 {
 	int k = 0;
-	for (int i = 0; i < len-1; i++)
+	for (int i = 0; i < len - 1; i++)
 	{
-		for(int j=i+1;j<len;j++)
-		if (arr[i] + arr[j] == value)
+		for (int j = i + 1; j < len; j++)
 		{
-		//	printf("%d+%d=%d\n", arr[i], arr[j], value);
-			k++;
+			if (arr[i] + arr[j] == value)
+				k++;
 		}
+
 	}
 	return k;
 }
 int countPairs2(int* arr, int len, int value)
 {
-	int i = 0, n = 0, k = 0;
-	for (int i = 0; i < len; i++)
+	int k = 0;
+	for (int i = 0; i < len - 1; i++)
 	{
-		for (int j = len; j >= i; j--)
+		for (int j = len - 1; j > i; j--)
 		{
-			if ((i != j) && (arr[i] + arr[j] == value))
+			if (arr[i] + arr[j] == value)
 			{
-				//	printf("%d+%d=%d\n", arr[i], arr[j], value);
 				k++;
+
 			}
 		}
 	}
@@ -31,32 +31,36 @@ int countPairs2(int* arr, int len, int value)
 int countPairs3(int* arr, int len, int value)
 {
 	int k = 0;
-	for (int i = 0; i < len; i++) {
-		int left = i;
-		int right = len;
-		while (left < right-1) {
+	for (int i = 0; i < len; i++)
+	{
+		int left = i, right = len;
+
+		while (left < right - 1)
+		{
 			int mid = (left + right) / 2;
-			if (arr[i] + arr[mid] == value) {
+			if (arr[i] + arr[mid] == value)
+			{
 				k++;
 				int j = mid + 1;
-				while (arr[i] + arr[j] == value && j < right&& i!=len) {
+				while (arr[i] + arr[j] == value && j < right)
+				{
 					k++;
 					j++;
 				}
 				j = mid - 1;
-				while (arr[i] + arr[j] == value && j > left && i!= len) {
+				while (arr[i] + arr[j] == value && j > left)
+				{
 					k++;
 					j--;
 				}
 				break;
 			}
-			if (arr[i] + arr[mid] > value) {
+			if (arr[i] + arr[mid] > value)
 				right = mid;
-			}
-			else {
+			else
 				left = mid;
-			}
 		}
+
 	}
 	return k;
 }
