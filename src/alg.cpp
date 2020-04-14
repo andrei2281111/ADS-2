@@ -60,7 +60,7 @@ int countPairs3(int *arr, int len, int value)
 			else
 				left = mid;
 		}
-
+ 
 	}
 	return k;
 }
