@@ -30,48 +30,39 @@ int countPairs2(int *arr, int len, int value)
     return result;
 }
 
-int countPairs3(int *arr, int len, int value) {
+int countPairs3(int *arr, int len, int value)
+{
+	int c = 0;
+	for (int i = 0; i < len - 1; i++)
+	{
+		int left = i, right = len;
 
-    int res = 0, num2, middle, low, high, step; 
+		while (left < right-1)
+		{
+			int mid = (left + right) / 2;
+			if (arr[i] + arr[mid] == value)
+			{
+				c++;
+				int j = mid+1;
+				while (arr[i] + arr[j] == value && j <right)
+				{
+					c++;
+					j++;
+				}
+				j = mid - 1;
+				while (arr[i] + arr[j] == value && j>left)
+				{
+					c++;
+					j--;
+				}
+				break;
+			}
+			if (arr[i] + arr[mid] > value)
+				right = mid;
+			else
+				left = mid;
+		}
 
-    for (int i=0; i<len; i++) {
-
-        num2 = value - arr[i];
-
-        low = 0;
-        high = len-1;
-
-        while (low<=high) {
-
-            middle = (low+high)/2;
-
-            if (num2 == arr[middle]) {
-                if (arr[i]!=num2)
-               res++;
-
-               step = middle;
-               while (step>0) {
-                   if (arr[step-1]!=num2) break;
-                   else {
-                       res++;
-                       step--;
-                   }
-               }
-               step=middle;
-               while (step<len-1) { 
-                   if (arr[step+1]!=num2) break;
-                   else {
-                       res++;
-                       step++;
-                   }
-               }
-               break; 
-            }
-           else if (num2<arr[middle])
-           high = middle - 1;
-           else 
-           low = middle + 1;
-        }
-    }
-    return res/2;
+	}
+	return c;
 }
