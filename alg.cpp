@@ -41,8 +41,14 @@ int countPairs3(int *arr, int len, int value)
         {
             if (arr[middle] == search)
             {
-                for (; arr[middle] == search; middle--) { }
-                for (; arr[++middle] == search; result++) { }
+                while (arr[middle] == search) 
+                {
+                    middle--; 
+                }
+                while (arr[++middle] == search) 
+                { 
+                    result++;
+                }
                 break;
             }
             if (arr[middle] < search)
