@@ -11,7 +11,7 @@ int countPairs1(int *arr, int len, int value)
             }
         }
     }
-    return result; //4
+    return result; 
 }
 
 int countPairs2(int *arr, int len, int value)
@@ -39,7 +39,6 @@ int countPairs3(int *arr, int len, int value)
         int middle = ((len - i)/2) + i;
         for (int start = i, end = len; middle != start || middle != end; middle = ((end - start) / 2) + start)
         {
-            //std::cout << start << " " << search << " " << end << "\n";
             if (arr[middle] == search)
             {
                 for (; arr[middle] == search; middle--) { }
