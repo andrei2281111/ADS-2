@@ -37,7 +37,8 @@ int countPairs2(int* arr, int len, int value) {
 }
 int countPairs3(int* arr, int len, int value) {
     int search = 0;
-    for (int i = 0; i < len; i++)
+    int i;
+    for (i = 0; i < len; i++)
     {
         int first = 0;
         int last = len - 1;
