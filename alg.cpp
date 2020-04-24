@@ -35,30 +35,29 @@ int countPairs2(int* arr, int len, int value) {
         }
     }
 }
-int countPairs3(int* arr, int len, int value) {
+int countPairs3(int* arr, int len, int value){
     int search = 0;
-    for (int i = 0; i < len-1; i++)
-    {
+    for (int i = 0; i < len-1; i++){
         int first = i;
-        int last = len ;
-        while (first < last) {
+        int last = len;
+        while (first < last-1){
             int mid = first + (last - first) / 2;
-            if (arr[mid] + arr[i] == value && mid > i) {
+            if (arr[mid] + arr[i] == value){
                 search = search + 1;
-                int k = 1;
-                while ((arr[mid + k] + arr[i]) == value && ((mid + k)<last)) {
+                int k = mid+1;
+                while (arr[k] + arr[i] == value && k<last){
                     search = search + 1;
                     k++;
                 }
-                k = 1;
-                while ((arr[mid - k] + arr[i]) == value && ((mid - k) >first)) {
+                k = mid - 1;
+                while (arr[k] + arr[i] == value && k >first) {
                     search = search + 1;
-                    k++;
+                    k--;
                 }
                 break;
             }
             if (arr[mid] + arr[i] > value)
-                last = mid ;
+                last = mid;
             else first = mid;
         }
     }
