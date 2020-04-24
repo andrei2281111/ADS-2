@@ -37,30 +37,35 @@ int countPairs2(int* arr, int len, int value) {
 }
 int countPairs3(int* arr, int len, int value) {
     int search = 0;
-    int i;
-    for (i = 0; i < len; i++)
+    cout << endl << "countPairs3 ";
+    
+    for (int i = 0; i < len-1; i++)
     {
-        int first = 0;
-        int last = len - 1;
-        while (first <= last) {
+        int first = i;
+        int last = len ;
+       
+        while (first < last) {
             int mid = first + (last - first) / 2;
             if (arr[mid] + arr[i] == value && mid > i) {
                 search = search + 1;
+                cout << endl << search << " :mid: " << arr[mid] << " + " << arr[i];
                 int k = 1;
-                while ((arr[mid + k] + arr[i]) == value && ((mid + k) <= last)) {
+                while ((arr[mid + k] + arr[i]) == value && ((mid + k)<last)) {
                     search = search + 1;
+                    cout << endl << search << " :mid + k: " << arr[mid + k] << " + " << arr[i];
                     k++;
                 }
                 k = 1;
-                while ((arr[mid - k] + arr[i]) == value && ((mid - k) > i)) {
+                while ((arr[mid - k] + arr[i]) == value && ((mid - k) >first)) {
                     search = search + 1;
+                    cout << endl << search << " :mid - k: " << arr[mid - k] << " + " << arr[i];
                     k++;
                 }
                 break;
             }
-            if (arr[mid] + arr[i] <= value)
-                first = mid + 1;
-            else last = mid - 1;
+            if (arr[mid] + arr[i] > value)
+                last = mid ;
+            else first = mid;
         }
     }
     return search;
